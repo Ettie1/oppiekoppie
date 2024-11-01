@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace oppiekoppie.Models;
 
-public class RequestBooking
+public class Booking
 {
     [Key]
     [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-    public int RequestBookingId {get; set;}
+    public int BookingId {get; set;}
     public string Title {get; set;}
     public string Firstname {get; set;}
     public string Lastname {get; set;}

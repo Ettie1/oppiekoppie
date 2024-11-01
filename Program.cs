@@ -15,6 +15,9 @@ var mysqlconn = builder.Configuration.GetConnectionString("mysqlconn");
 builder.Services.AddDbContext<OppieKoppieContext>(options => 
 options.UseMySql(mysqlconn, ServerVersion.Parse("8.0.36-mysql"), null));
 
+var webconn = builder.Configuration.GetConnectionString("webconn");
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(servOpt => {servOpt.CommandTimeout(30); servOpt.EnableRetryOnFailure(); servOpt.UseAzureSqlDefaults(enable: true); } ) );
+
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
